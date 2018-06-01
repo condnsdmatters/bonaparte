@@ -22,7 +22,7 @@ def export_to_yaml(what, fullname, code_object, lines):
         write_to_yaml(pkg, name, filename, src, sig, params, param_info, lines)
 
     except (OSError, TypeError) as e:
-        log_error(what, fullname, code_object, lines)
+        log_error(what, filename, fullname, code_object, lines)
 
 def get_filename(obj):
     return inspect.getfile(obj).split("site-packages")[-1]
@@ -109,7 +109,9 @@ def write_to_yaml(pkg, name, filename, src, sig, params, param_info, lines):
     with open(YAML_PATH + pkg+".short.yaml", "a") as f:
         f.write(pyaml.dump({filename+'--'+name:short_record}, indent=4))
 
-def log_error(what, name, obj, lines):
+def log_error(what, filename, name, obj, lines):
     with open(YAML_PATH + "error.yaml", "a") as f:
+        f.write(filename)
+        f.write("\n")
         f.write(name)
         f.write("\n")
