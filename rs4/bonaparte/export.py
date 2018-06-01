@@ -10,16 +10,19 @@ NO_DOCSTRING_REG = re.compile("'''[^(''')]*'''", re.DOTALL)
 YAML_PATH = "yamls/"
 
 is_indented = lambda x: x.startswith(" ")
+has_description = lambda args: any([(a["desc"]) != [] for a in args]) 
 
 def export_to_yaml(what, fullname, code_object, lines):
+    filename = "UNK"
     try: 
         filename = get_filename(code_object)
         pkg, name = get_pkg_and_funcname(fullname)
         src = get_src(code_object)
         sig, params = get_sig_and_params(code_object)
         param_info = get_param_info(params, lines, sig)
-    
-        write_to_yaml(pkg, name, filename, src, sig, params, param_info, lines)
+        
+        if has_description(param_info):
+            write_to_yaml(pkg, name, filename, src, sig, params, param_info, lines)
 
     except (OSError, TypeError) as e:
         log_error(what, filename, fullname, code_object, lines)
