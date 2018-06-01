@@ -10,7 +10,7 @@ NO_DOCSTRING_REG = re.compile("'''[^(''')]*'''", re.DOTALL)
 YAML_PATH = "yamls/"
 
 is_indented = lambda x: x.startswith(" ")
-has_description = lambda args: any([(a["desc"]) != [] for a in args]) 
+has_description = lambda args: any([bool(a["desc"]) for a in args.values()]) 
 
 def export_to_yaml(what, fullname, code_object, lines):
     filename = "UNK"
