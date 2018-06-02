@@ -1,13 +1,12 @@
 #!/bin/bash
 
 function get_yamls(){
-    mkdir -p indexes yamls
-    for file in $(cat $1); do 
-      pip install $file
-      python  bonaparte/subpackage.py $file
-      make singlehtml
-      mv index.rst indexes/$file.done
-      yes | pip uninstall $file
+    for file in $(ls indexes |grep -v ".file.done"); do 
+      echo "Parsing $file"
+      cp indexes/$file index.rst 
+      make singlehtml 2> /dev/null
+      mv indexes/$file indexes/$file.done
+      rm -f index.rst
     done
   }
-get_yamls top_modules.txt
+get_yamls
