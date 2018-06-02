@@ -51,6 +51,9 @@ Indices and tables
 
 if __name__=="__main__":
     import sys
-    file = to_index_file(to_directive_string(get_submodules(sys.argv[2])))
+    submodules = get_submodules(sys.argv[1])
+    if len(submodules)==1:
+        submodules.pop()
+    file = to_index_file(to_directive_string(submodules))
     with open("index.rst", 'w') as f:
         f.write(file)
