@@ -1,0 +1,5 @@
+venv
+bonaparte/__pycache__
+yamls
+build
+*.pyc
