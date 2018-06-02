@@ -16,12 +16,12 @@ def get_submodules(package):
                 pkg_list.append(modname)
     return pkg_list
 
-    
+
 
 def to_directive_string(submodules):
     directive = """.. automodule:: {}\n    :members:"""
     dir_string = [directive.format(s) for s in submodules]
-    
+
     return "\n".join(dir_string)
 
 
@@ -50,6 +50,7 @@ Indices and tables
 
 
 if __name__=="__main__":
-    file = to_index_file(to_directive_string(get_submodules("tensorflow")))
+    import sys
+    file = to_index_file(to_directive_string(get_submodules(sys.argv[2])))
     with open("index.rst", 'w') as f:
         f.write(file)
