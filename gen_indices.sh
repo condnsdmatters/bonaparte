@@ -3,8 +3,11 @@
 function gen_indices(){
     mkdir -p indexes yamls
     
-    echo "installing modules.tx"
-    pip3 -q install -r $1
+    echo "pip installing..."
+    for module in $(cat $1); do
+      echo "... $module"  
+      pip3 -q install $module
+    done
     echo "generating index files"
     python3 bonaparte/subpackage.py
     for new_file in $(ls indexes/*.file); do 
@@ -12,6 +15,7 @@ function gen_indices(){
         rm $new_file
       fi
     done
+    ls indexes/*.file
 }
 
 gen_indices modules.txt
