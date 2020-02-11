@@ -55,7 +55,7 @@ dask==0.17.5
 datadog==0.20.0
 decorator==4.3.0
 dill==0.2.7.1
-Django==2.0.6
+Django==2.2.10
 django-environ==0.4.4
 docker==3.3.0
 docker-pycreds==0.2.3
