@@ -139,7 +139,7 @@ librosa==0.6.1
 linecache2==1.0.0
 llvmlite==0.23.2
 lockfile==0.12.2
-lxml==4.2.1
+lxml==4.6.2
 macholib==1.9
 magenta==0.3.8
 Markdown==2.6.11
