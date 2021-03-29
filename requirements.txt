@@ -203,7 +203,7 @@ pydevd==1.2.0
 PyDispatcher==2.0.5
 pyflakes==1.6.0
 pygame==1.9.3
-Pygments==2.2.0
+Pygments==2.7.4
 pyhocon==0.3.43
 PyJWT==1.6.4
 pykube==0.15.0
