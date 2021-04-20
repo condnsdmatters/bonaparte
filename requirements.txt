@@ -192,7 +192,7 @@ psutil==5.4.5
 psycopg2==2.7.4
 ptvsd==3.2.1
 ptyprocess==0.5.2
-py==1.5.3
+py==1.10.0
 pyaml==17.12.1
 pyasn1==0.4.3
 pyasn1-modules==0.2.1
